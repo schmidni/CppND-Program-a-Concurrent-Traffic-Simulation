@@ -36,7 +36,11 @@ template <typename T> void MessageQueue<T>::send(T &&msg) {
 
 /* Implementation of class "TrafficLight" */
 
-TrafficLight::TrafficLight() { _currentPhase = TrafficLightPhase::red; }
+
+TrafficLight::TrafficLight() { 
+    _currentPhase = TrafficLightPhase::red; 
+    _type = ObjectType::objectTrafficLight;
+}
 
 void TrafficLight::waitForGreen() {
     // FP.5b : add the implementation of the method waitForGreen, in which an
@@ -78,12 +82,11 @@ void TrafficLight::cycleThroughPhases() {
 
     // init variables for measuring time
     auto start = std::chrono::high_resolution_clock::now();
-    auto end = std::chrono::high_resolution_clock::now();
-    auto elapsed = end - start;
+    std::chrono::duration<double> elapsed;
 
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        end = std::chrono::high_resolution_clock::now();
+        elapsed = std::chrono::high_resolution_clock::now() - start;
 
         if (elapsed.count() > cycleTime) {
             start = std::chrono::high_resolution_clock::now();

@@ -8,7 +8,7 @@
 
 // forward declarations to avoid include cycle
 class Vehicle;
-
+class Intersection;
 
 // FP.3 Define a class „MessageQueue“ which has the public methods send and receive. 
 // Send should take an rvalue reference of type TrafficLightPhase whereas receive should return this type. 
@@ -33,6 +33,7 @@ private:
 // as well as „TrafficLightPhase getCurrentPhase()“, where TrafficLightPhase is an enum that 
 // can be either „red“ or „green“. Also, add the private method „void cycleThroughPhases()“. 
 // Furthermore, there shall be the private member _currentPhase which can take „red“ or „green“ as its value. 
+
 enum TrafficLightPhase {
     green,
     red
@@ -46,7 +47,6 @@ public:
 
     // getters / setters
     TrafficLightPhase getCurrentPhase();
-
 
     // typical behaviour methods
     void waitForGreen();
